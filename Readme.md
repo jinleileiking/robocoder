@@ -1,8 +1,8 @@
-# 简介
+# Introduction
 
-利用Agently, 通过调用 chatgpt，根据需求生成代码
+Use Agently to generate code by calling ChatGPT based on requirements.
 
-技术栈
+## Tech Stack
 
 - Python
 - Go
@@ -10,35 +10,32 @@
   - gorm
 - Vue
 
-# 步骤
+## Steps
 
-# 安装依赖
+### Install Dependencies
 
-- pip install -U Agently
-- pip install -U openai httpx typer loguru
+- `pip install -U Agently`
+- `pip install -U openai httpx typer loguru`
 
-# 生成代码
+### Generate Code
 
 - `python3 ./backend.py YOUR_PROJECT_NAME`
 
-程序会读取prd.txt作为需求，在YOUR_PROJECT_NAME目录生成
+The program will read `prd.txt` as the requirements and generate the following files in the `YOUR_PROJECT_NAME` directory:
 
-> prd.md: 需求文档
+> `prd.md`: Requirements document  
+> `*.go`: Program code  
 
-> \*.go: 程序代码
+### Fine-Tuning
 
-# 微调
+- Modify the database connection information in `db.go`.
+- Modify the listen port in `main.go`.
+- Navigate to the `YOUR_PROJECT_NAME` directory and adjust the code as needed, as the output from the LLM may have some issues.
 
-- db.go修改数据库连接信息
-- main.go修改listen port
-- 进入YOUR_PROJECT_NAME改改代码，因为LLM输出会有些问题
+### Run the Program
 
-# 运行程序
+Navigate to the `YOUR_PROJECT_NAME` directory and execute the following commands:
 
-进入 YOUR_PROJECT_NAME 目录，执行
-
-> go mod tidy
-
-> go build
-
-> ./YOUR_PROJECT_NAME
+> `go mod tidy`  
+> `go build`  
+> `./YOUR_PROJECT_NAME`
