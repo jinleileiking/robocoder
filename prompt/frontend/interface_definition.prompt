@@ -1,0 +1,201 @@
+你是一名前端开发专家，根据用户给你的接口描述，实现相关转换：
+
+要求：
+- 根据相关性对接口做聚合，把相关度高的接口。
+- 输入是接口描述。
+- 输出为json数组，元素为包含path和content元素的对象；path是聚合后的路径，统一前缀src/api/xxx.ts, content为聚合后的接口描述。
+
+样例输入:
+1. 获取商品列表
+描述： 获取所有商品的列表。
+URL： `/products`
+请求方法： `GET`
+请求参数： 可能包括分页参数（如`page`和`limit`），搜索关键词（如`search`），排序选项（如`sort`）等。
+返回值样例：
+  {
+    "totalItems": 100,
+    "currentPage": 1,
+    "totalPages": 10,
+    "items": [
+      {
+        "id": "1",
+        "name": "Product A",
+        "description": "Description of Product A",
+        "price": 19.99,
+        "currency": "USD",
+        "image": "url_to_image"
+      },
+      // 其他商品信息...
+    ]
+  }
+
+2. 获取单个商品详情
+描述： 根据商品ID获取单个商品的详细信息。
+URL： `/products/{id}`
+请求方法： `GET`
+路径参数： `{id}` 商品的ID。
+返回值样例：
+  {
+    "id": "1",
+    "name": "Product A",
+    "description": "Description of Product A",
+    "price": 19.99,
+    "currency": "USD",
+    "image": "url_to_image",
+    "category": "Electronics",
+    "ratings": 4.5,
+    "inStock": true,
+    "tags": ["New", "Sale"]
+  }
+
+3. 用户注册
+描述： 创建新用户账户。
+URL： `/users/register`
+请求方法： `POST`
+请求体样例：
+  {
+    "username": "newuser",
+    "email": "newuser@example.com",
+    "password": "password123"
+  }
+返回值样例：
+  {
+    "message": "User registered successfully",
+    "userId": "123"
+  }
+
+4. 用户登录
+描述： 用户登录以获取访问令牌。
+URL： `/users/login`
+请求方法： `POST`
+请求体样例：
+  {
+    "username": "existinguser",
+    "password": "password123"
+  }
+返回值样例：
+  {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "userId": "456",
+    "expires": "2024-05-22T08:30:00Z"
+  }
+
+5. 用户账户信息更新
+描述： 更新用户账户信息。
+URL： `/users/profile`
+请求方法： `PUT`
+请求头： 需要包含`Authorization`令牌。
+请求体样例：
+  {
+    "email": "updatedemail@example.com",
+    "password": "newpassword123"
+  }
+返回值样例：
+  {
+    "message": "Profile updated successfully"
+  }
+
+样例输出
+```json
+[{
+  "path": "src/api/goods.ts",
+  "content": 
+  "1. 获取商品列表
+  描述： 获取所有商品的列表。
+    URL： `/products`
+    请求方法： `GET`
+    请求参数： 可能包括分页参数（如`page`和`limit`），搜索关键词（如`search`），排序选项（如`sort`）等。
+    返回值样例：
+      {
+        \"totalItems\": 100,
+        \"currentPage\": 1,
+        \"totalPages\": 10,
+        \"items\": [
+          {
+            \"id\": \"1\",
+            \"name\": \"Product A\",
+            \"description\": \"Description of Product A\",
+            \"price\": 19.99,
+            \"currency\": \"USD\",
+            \"image\": \"url_to_image\"
+          },
+          // 其他商品信息...
+        ]
+      }
+
+    2. 获取单个商品详情
+    描述： 根据商品ID获取单个商品的详细信息。
+    URL： `/products/{id}`
+    请求方法： `GET`
+    路径参数： `{id}` 商品的ID。
+    返回值样例：
+      {
+        \"id\": \"1\",
+        \"name\": \"Product A\",
+        \"description\": \"Description of Product A\",
+        \"price\": 19.99,
+        \"currency\": \"USD\",
+        \"image\": \"url_to_image\",
+        \"category\": \"Electronics\",
+        \"ratings\": 4.5,
+        \"inStock\": true,
+        \"tags\": [\"New\", \"Sale\"]
+      }"
+}, {
+  "path": "src/api/account.ts",
+  "content": 
+  "3. 用户注册
+  描述： 创建新用户账户。
+  URL： `/users/register`
+  请求方法： `POST`
+  请求体样例：
+    {
+      \"username\": \"newuser\",
+      \"email\": \"newuser@example.com\",
+      \"password\": \"password123\"
+    }
+  返回值样例：
+    {
+      \"message\": \"User registered successfully\",
+      \"userId\": \"123\"
+    }
+
+  4. 用户登录
+  描述： 用户登录以获取访问令牌。
+  URL： `/users/login`
+  请求方法： `POST`
+  请求体样例：
+    {
+      \"username\": \"existinguser\",
+      \"password\": \"password123\"
+    }
+  返回值样例：
+    {
+      \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",
+      \"userId\": \"456\",
+      \"expires\": \"2024-05-22T08:30:00Z\"
+    }
+
+  5. 用户账户信息更新
+  描述： 更新用户账户信息。
+  URL： `/users/profile`
+  请求方法： `PUT`
+  请求头： 需要包含`Authorization`令牌。
+  请求体样例：
+    {
+      \"email\": \"updatedemail@example.com\",
+      \"password\": \"newpassword123\"
+    }
+  返回值样例：
+    {
+      \"message\": \"Profile updated successfully\"
+    }"
+}]
+```
+
+这是新的输入：
+---
+{api_doc}
+---
+
+请按要求给出输出，必须按上述JSON格式给出，不需要额外的解释。

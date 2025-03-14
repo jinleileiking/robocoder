@@ -1,0 +1,144 @@
+当然，我可以帮你生成相应的curl命令行以便你进行CRUD操作。由于你提供的路由规则是针对`persons`的，但实际上你给出的struct列表中并没有`Person`相关的struct。我会假设你想要的是对`Admin`, `Store`, `Device`进行CRUD操作，并且调整相应的路由和curl命令行。
+
+### Admin CRUD
+
+#### 获取所有管理员
+```sh
+curl -X GET http://localhost:8080/v1/admins
+```
+
+#### 获取单个管理员
+```sh
+curl -X GET http://localhost:8080/v1/admins/{admin_id}
+```
+
+#### 创建管理员
+```sh
+curl -X POST http://localhost:8080/v1/admins \
+-H "Content-Type: application/json" \
+-d '{
+  "Username": "admin1",
+  "Password": "hashedpassword",
+  "Email": "admin1@example.com",
+  "Phone": "1234567890",
+  "Role": "SuperAdmin",
+  "Permissions": "{\"read\": true, \"write\": true}"
+}'
+```
+
+#### 更新管理员
+```sh
+curl -X PUT http://localhost:8080/v1/admins/{admin_id} \
+-H "Content-Type: application/json" \
+-d '{
+  "Username": "admin1",
+  "Password": "hashedpassword",
+  "Email": "admin1@example.com",
+  "Phone": "1234567890",
+  "Role": "SuperAdmin",
+  "Permissions": "{\"read\": true, \"write\": true}"
+}'
+```
+
+#### 删除管理员
+```sh
+curl -X DELETE http://localhost:8080/v1/admins/{admin_id}
+```
+
+### Store CRUD
+
+#### 获取所有门店
+```sh
+curl -X GET http://localhost:8080/v1/stores
+```
+
+#### 获取单个门店
+```sh
+curl -X GET http://localhost:8080/v1/stores/{store_id}
+```
+
+#### 创建门店
+```sh
+curl -X POST http://localhost:8080/v1/stores \
+-H "Content-Type: application/json" \
+-d '{
+  "Name": "Store1",
+  "Address": "123 Main St",
+  "AdminID": 1,
+  "Description": "Main store",
+  "Latitude": 40.7128,
+  "Longitude": -74.0060
+}'
+```
+
+#### 更新门店
+```sh
+curl -X PUT http://localhost:8080/v1/stores/{store_id} \
+-H "Content-Type: application/json" \
+-d '{
+  "Name": "Store1",
+  "Address": "123 Main St",
+  "AdminID": 1,
+  "Description": "Main store",
+  "Latitude": 40.7128,
+  "Longitude": -74.0060
+}'
+```
+
+#### 删除门店
+```sh
+curl -X DELETE http://localhost:8080/v1/stores/{store_id}
+```
+
+### Device CRUD
+
+#### 获取所有设备
+```sh
+curl -X GET http://localhost:8080/v1/devices
+```
+
+#### 获取单个设备
+```sh
+curl -X GET http://localhost:8080/v1/devices/{device_id}
+```
+
+#### 创建设备
+```sh
+curl -X POST http://localhost:8080/v1/devices \
+-H "Content-Type: application/json" \
+-d '{
+  "Type": "Sensor",
+  "ModelType": "ModelX",
+  "Location": "Warehouse",
+  "Status": "Running",
+  "Temperature": 22.5,
+  "BatteryLevel": 85.0,
+  "StoreID": 1,
+  "WarningLevel": "Low",
+  "WarningConfig": "{\"threshold\": 70}"
+}'
+```
+
+#### 更新设备
+```sh
+curl -X PUT http://localhost:8080/v1/devices/{device_id} \
+-H "Content-Type: application/json" \
+-d '{
+  "Type": "Sensor",
+  "ModelType": "ModelX",
+  "Location": "Warehouse",
+  "Status": "Running",
+  "Temperature": 22.5,
+  "BatteryLevel": 85.0,
+  "StoreID": 1,
+  "WarningLevel": "Low",
+  "WarningConfig": "{\"threshold\": 70}"
+}'
+```
+
+#### 删除设备
+```sh
+curl -X DELETE http://localhost:8080/v1/devices/{device_id}
+```
+
+请根据你的实际项目需求调整上述命令中的URL和数据部分。确保你的Gin路由和控制器实现与这些API路径和方法相匹配。

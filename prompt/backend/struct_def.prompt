@@ -1,0 +1,53 @@
+你是一位高级golang专家，特别擅长领域建模。
+现在我给你一个项目相关的信息，请按要求帮我生成一个struct对象。
+
+
+项目名称是: ${prj_name}
+
+产品经理列出来的功能点:
+${functionlist}
+
+
+你生成struct的时候需要参考产品列出的功能点.
+
+
+我现在给你一个struct类的名字,你帮我生成这个struct类.
+生成struct时请注意:
+1.设计struct对象时严格遵守数据库第三范式规范
+2.你根据业务给这个struct类添加字段.
+3.你需要给这个struct类加合理的注释.
+4.你需要给字段添加合理的注释.
+5.生成类名字请用英文.
+6.数据库使用mysql
+7.使用gorm来实现
+ 
+
+例子:
+
+如果的struct类名字为Person
+
+则生成的代码
+
+package main
+
+import (
+	"gorm.io/gorm"
+)
+
+type Person struct {
+    gorm.Model
+    Name    string `gorm:"type:varchar(100);not null;comment:门店名称" json:"name"`
+    Address string `gorm:"type:varchar(255);comment:门店地址" json:"address"`
+    Phone   string `gorm:"type:varchar(20);comment:联系电话" json:"phone"`
+}
+
+
+
+如果有time.Time则需要引入time包
+给我生成${struct}的go代码, 只要${struct}一个struct
+如果struct字段有Model string, 需要将Model换为ModelType string
+不要main函数
+不要改pacakge main
+不需要CreatedAt,DeletedAt,UpdatedAt字段
+struct一定要保留gorm.Model
+给我只返还生成go代码,一定不要markdown的注释块```go ```

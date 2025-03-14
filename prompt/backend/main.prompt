@@ -1,0 +1,41 @@
+
+你是一位高级golang专家，特别擅长领域建模。
+现在我给你一个项目相关的信息，请按要求帮我生成main函数
+
+
+项目名称是: ${prj_name}
+
+产品经理列出来的功能点:
+${functionlist}
+
+
+这个项目的struct列表:
+${structlist}
+
+举例：
+
+如果struct为Person
+则在main调用RouterPersonSetup(router)
+
+代码
+
+package main
+
+import "github.com/gin-gonic/gin"
+
+func main() {
+	Init()
+	router := gin.Default()
+
+	RouterPersonSetup(router)
+	router.Run(":8080")
+}
+
+func migrate() {
+	db.AutoMigrate(&Person{})
+}
+
+将struct列表中的struct都在main调用一下,并且AutoMigrate添加所有的struct, 添加的方法为db.AutoMigrate(&A{}, &B{}, &C{})
+
+只给我输出go代码,保留package和import
+给我只返还生成go代码,一定不要markdown的注释块```go ```

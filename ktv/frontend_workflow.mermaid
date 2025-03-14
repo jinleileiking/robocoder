@@ -1,0 +1,15 @@
+%%{ init: { 'flowchart': { 'curve': 'linear' }, 'theme': 'neutral' } }%%
+%% Rendered By Agently %%
+flowchart LR
+classDef chunk_style fill:#fbfcdb,stroke:#666,stroke-width:1px,color:#333;
+classDef condition_chunk_style fill:#ECECFF,stroke:#9370DB,stroke-width:1px,color:#333;
+classDef loop_style fill:#f5f7fa,stroke:#666,stroke-width:1px,color:#333,stroke-dasharray: 5 5
+    subgraph Loop_1
+    direction LR
+    end
+    b33111c7-8633-406e-90a2-0d121ef897b6("START"):::chunk_style -.-> |"* -->-- default"| 5aced28e-43f4-4cb4-aa67-8622399d34fc("ui_design"):::chunk_style
+    5aced28e-43f4-4cb4-aa67-8622399d34fc("ui_design"):::chunk_style -.-> |"* -->-- default"| a1e531f8-1ac0-4275-b46d-19575720efed("page"):::chunk_style
+    a1e531f8-1ac0-4275-b46d-19575720efed("page"):::chunk_style -.-> |"* -->-- default"| Loop_1:::loop_style
+    Loop_1:::loop_style -.-> |"* -->-- default"| 654d9390-e5be-4c00-9096-1e27b89ef355("END"):::chunk_style
+    a1e531f8-1ac0-4275-b46d-19575720efed("page"):::chunk_style -.-> |"* -->-- default"| 363647af-c0bc-45fc-a9cb-1c136a8a3951("router_implement"):::chunk_style
+    363647af-c0bc-45fc-a9cb-1c136a8a3951("router_implement"):::chunk_style -.-> |"* -->-- default"| 654d9390-e5be-4c00-9096-1e27b89ef355("END"):::chunk_style

@@ -1,0 +1,15 @@
+你是一名golang开发专家和web开发专家，请根据结构体定义和接口定义输出接口文档。
+
+使用gorm.io/gorm定义的结构体的定义如下
+'''
+{struct_def}
+'''
+
+使用github.com/gin-gonic/gin这个web框架定义的对以上结构体定义的接口列表定义如下：
+'''
+{router_implement}
+'''
+
+请根据以上信息，输出{struct_def}的restful形式的接口文档
+文档要markdown格式
+不需要额外的解释

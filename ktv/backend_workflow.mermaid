@@ -1,0 +1,25 @@
+%%{ init: { 'flowchart': { 'curve': 'linear' }, 'theme': 'neutral' } }%%
+%% Rendered By Agently %%
+flowchart LR
+classDef chunk_style fill:#fbfcdb,stroke:#666,stroke-width:1px,color:#333;
+classDef condition_chunk_style fill:#ECECFF,stroke:#9370DB,stroke-width:1px,color:#333;
+classDef loop_style fill:#f5f7fa,stroke:#666,stroke-width:1px,color:#333,stroke-dasharray: 5 5
+    subgraph Loop_1
+    direction LR
+    aecead8f-7eda-4b69-853b-b5d7d244b9f4("START"):::chunk_style -.-> |"* -->-- default"| dac1d29b-291b-4bfd-9fd7-fc2438aaa4df("struct_def"):::chunk_style
+    dac1d29b-291b-4bfd-9fd7-fc2438aaa4df("struct_def"):::chunk_style -.-> |"* -->-- default"| b064ee11-6451-40ae-9c1a-d8734bd5c0e1("END"):::chunk_style
+    end
+    subgraph Loop_2
+    direction LR
+    9a25b882-a3a2-4541-9be8-3951e63e04da("START"):::chunk_style -.-> |"* -->-- default"| 3d7e80c8-fdfb-4d58-a272-2a99fc2f609b("router_implement"):::chunk_style
+    3d7e80c8-fdfb-4d58-a272-2a99fc2f609b("router_implement"):::chunk_style -.-> |"* -->-- default"| de8997cf-bdff-436b-931d-f79f2d8f6355("END"):::chunk_style
+    end
+    c840bf95-d92e-43db-a1c7-3839561a498b("START"):::chunk_style -.-> |"* -->-- default"| 87a9f00b-52ab-44a0-8129-db1d626cf66b("prd"):::chunk_style
+    87a9f00b-52ab-44a0-8129-db1d626cf66b("prd"):::chunk_style -.-> |"* -->-- default"| 8d6b1449-a7dc-4e27-ac25-8e8be600d4d5("funclist"):::chunk_style
+    8d6b1449-a7dc-4e27-ac25-8e8be600d4d5("funclist"):::chunk_style -.-> |"* -->-- default"| a80ef96c-2b96-4c95-9dae-bd70e029d027("structlist"):::chunk_style
+    a80ef96c-2b96-4c95-9dae-bd70e029d027("structlist"):::chunk_style -.-> |"* -->-- default"| Loop_1:::loop_style
+    Loop_1:::loop_style -.-> |"* -->-- default"| 1721e248-d009-4dff-8126-08f2db4071c8("END"):::chunk_style
+    a80ef96c-2b96-4c95-9dae-bd70e029d027("structlist"):::chunk_style -.-> |"* -->-- default"| Loop_2:::loop_style
+    Loop_2:::loop_style -.-> |"* -->-- default"| 1721e248-d009-4dff-8126-08f2db4071c8("END"):::chunk_style
+    a80ef96c-2b96-4c95-9dae-bd70e029d027("structlist"):::chunk_style -.-> |"* -->-- default"| 194a3a1c-8214-4db3-834c-e20eee019297("@main_implement"):::chunk_style
+    194a3a1c-8214-4db3-834c-e20eee019297("@main_implement"):::chunk_style -.-> |"* -->-- default"| 1721e248-d009-4dff-8126-08f2db4071c8("END"):::chunk_style
